@@ -12,10 +12,10 @@ teamName3 = rtn3.ReadLine()
 teamName4 = rtn4.ReadLine()
 
 ' Gets Current Score
-Set rts1 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\t1score.txt",1)
-Set rts2 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\t2score.txt",1)
-Set rts3 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\t3score.txt",1)
-Set rts4 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\t4score.txt",1)
+Set rts1 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\t1score.txt",1)
+Set rts2 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\t2score.txt",1)
+Set rts3 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\t3score.txt",1)
+Set rts4 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\t4score.txt",1)
 
 team1Score = rts1.ReadLine()
 team2Score = rts2.ReadLine()
@@ -23,7 +23,7 @@ team3Score = rts3.ReadLine()
 team4Score = rts4.ReadLine()
 
 ' Declare Winner if score is equal or above 2
-Set writeWinner = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\maptemp.txt",2,true)
+Set writeWinner = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
 If team1SCore >=2 Then
      writeWinner.WriteLine(teamName1+" Wins")
 ElseIf team2SCore >=2 Then
@@ -33,7 +33,7 @@ ElseIf team3SCore >=2 Then
 ElseIf team4SCore >=2 Then
      writeWinner.WriteLine(teamName4+" Wins")
 Else
-     objShell.Run "F:\Commands\mapcount.vbs"
+     objShell.Run "F:\Commands\scripts\mapcount.vbs"
 End If
 writeWinner.Close
 ' Set writeWinner = Nothing
