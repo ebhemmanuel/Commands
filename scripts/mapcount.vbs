@@ -1,33 +1,29 @@
 
 Set objFileToRead = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",1)
-Dim strLine
-do while not objFileToRead.AtEndOfStream
-     strLine = objFileToRead.ReadLine()
-     'Do something with the line
-loop
-objFileToRead.Close
-Set objFileToRead = Nothing
-
-Set objFileToWrite = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",2,true)
-objFileToWrite.WriteLine(strLine+1)
-objFileToWrite.Close
-Set objFileToWrite = Nothing
-
-Set objFileToRead = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",1)
-do while not objFileToRead.AtEndOfStream
-     strLine = objFileToRead.ReadLine()
-     'Do something with the line
-loop
-objFileToRead.Close
-Set objFileToRead = Nothing
-
-Set objFileToWrite = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
-Dim map
 Dim mapCount
-Dim mapD
+do while not objFileToRead.AtEndOfStream
+     mapCount = objFileToRead.ReadLine()
+     'Do something with the line
+loop
+objFileToRead.Close
+Set objFileToRead = Nothing
+
+Set mapState = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",2,true)
+mapState.WriteLine(mapCount+1)
+mapState.Close
+Set mapState = Nothing
+
+Set readCount = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",1)
+do while not readCount.AtEndOfStream
+     mapCount = readCount.ReadLine()
+     'Do something with the line
+loop
+readCount.Close
+Set readCount = Nothing
+
+Set mapState = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
 
 map = "MAP "
-mapCount = strLine
 mapD = " OF 3"
 If mapCount > 3 Then
     Dim objShell
@@ -35,6 +31,6 @@ If mapCount > 3 Then
     objShell.Run "F:\Commands\scripts\mapreset.vbs" 
     Set objShell = Nothing
 End If
-objFileToWrite.WriteLine(map+mapCount+mapD)
-objFileToWrite.Close
-Set objFileToWrite = Nothing
+mapState.WriteLine(map+mapCount+mapD)
+mapState.Close
+Set mapState = Nothing
