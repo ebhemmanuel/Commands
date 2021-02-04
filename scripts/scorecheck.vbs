@@ -1,26 +1,10 @@
 Dim objShell
 Set objShell = Wscript.CreateObject("WScript.Shell")
-' Gets Team Name
-Set rtn1 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\gdrive\smc-league\team-names\t1name.txt",1)
-Set rtn2 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\gdrive\smc-league\team-names\t2name.txt",1)
-Set rtn3 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\gdrive\smc-league\team-names\t3name.txt",1)
-Set rtn4 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\gdrive\smc-league\team-names\t4name.txt",1)
 
-teamName1 = rtn1.ReadLine()
-teamName2 = rtn2.ReadLine()
-teamName3 = rtn3.ReadLine()
-teamName4 = rtn4.ReadLine()
+' Gets Team Name & Check Score
+Include("F:\Commands\scripts\readnames.vbs")
+Include("F:\Commands\scripts\getcurrentscore.vbs")
 
-' Gets Current Score
-Set rts1 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\t1score.txt",1)
-Set rts2 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\t2score.txt",1)
-Set rts3 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\t3score.txt",1)
-Set rts4 = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\t4score.txt",1)
-
-team1Score = rts1.ReadLine()
-team2Score = rts2.ReadLine()
-team3Score = rts3.ReadLine()
-team4Score = rts4.ReadLine()
 
 ' Declare Winner if score is equal or above 2
 Set writeWinner = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
@@ -45,3 +29,24 @@ Else
 End If
 writeWinner.Close
 ' Set writeWinner = Nothing
+
+Sub Include(sIncludeFile)
+  Const OpenAsDefault = -2
+  Const FailIfNotExist = 0
+  Const ForReading = 1
+  Set oIncludeFSO = CreateObject("Scripting.FileSystemObject")
+  'Check for existance of include
+  If Not oIncludeFSO.FileExists(sIncludeFile) Then
+    Wscript.Echo "Error: Include File Not Found."
+    Exit Sub
+  End If
+  Set oIncludeFile = oIncludeFSO.OpenTextFile(sIncludeFile, ForReading, _
+  FailIfNotExist, OpenAsDefault)
+  sIncludeCode = oIncludeFile.ReadAll
+  oIncludeFile.Close
+  'Cleanup
+  Set oIncludeFSO = Nothing
+  Set oIncludeFile = Nothing
+  'Execute Include
+  ExecuteGlobal sIncludeCode 
+End Sub

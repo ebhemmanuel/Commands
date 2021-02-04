@@ -17,3 +17,18 @@ objShell.Run "F:\Commands\scripts\scorecheck.vbs"
 readTeamScore.Close
 Set readTeamScore = Nothing
 Set objShell = Nothing
+
+' Win counter - to 6 - wins the tournament
+
+' Create files for every round
+
+' Write to Round file
+' Round x Team X Wins + award point+1 
+
+' Write to Set file
+' Set 1 Fights - If Team x Wins then add 1 to the set win if their teamScore = 2
+' Set 2 Fights - If Team x Wins then add 1 to the set win if their teamScore = 4
+' If a team has 2 set wins they win the tournament.
+
+
+
