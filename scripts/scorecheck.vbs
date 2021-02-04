@@ -25,13 +25,21 @@ team4Score = rts4.ReadLine()
 ' Declare Winner if score is equal or above 2
 Set writeWinner = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
 If team1SCore >=2 Then
-     writeWinner.WriteLine(teamName1+" Wins")
+     writeWinner.WriteLine(teamName1+" Win!")
+     WScript.Sleep(1400)
+     objShell.Run "F:\Commands\actions\show-winner.vbs"
 ElseIf team2SCore >=2 Then
-     writeWinner.WriteLine(teamName2+" Wins")
+     writeWinner.WriteLine(teamName2+" Win!")
+     WScript.Sleep(1400)
+     objShell.Run "F:\Commands\actions\show-winner.vbs"
 ElseIf team3SCore >=2 Then
-     writeWinner.WriteLine(teamName3+" Wins")
+     writeWinner.WriteLine(teamName3+" Win!")
+     WScript.Sleep(1400)
+     objShell.Run "F:\Commands\actions\show-winner.vbs"
 ElseIf team4SCore >=2 Then
-     writeWinner.WriteLine(teamName4+" Wins")
+     writeWinner.WriteLine(teamName4+" Win!")
+      WScript.Sleep(1400)
+     objShell.Run "F:\Commands\actions\show-winner.vbs"
 Else
      objShell.Run "F:\Commands\scripts\mapcount.vbs"
 End If
