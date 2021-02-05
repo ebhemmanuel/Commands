@@ -18,12 +18,11 @@ readTeamScore.Close
 Set readTeamScore = Nothing
 Set objShell = Nothing
 
-' Win counter - to 6 - wins the tournament
-
+' To do 
+' Win counter - to 2 - wins the tournament
 ' Create files for every round
-
-' Write to Round file
-' Round x Team X Wins + award point+1 
+' Write to Round(s) file
+' Roundx TeamX Wins = award +1 to TeamX
 
 ' Write to Set file
 ' Set 1 Fights - If Team x Wins then add 1 to the set win if their teamScore = 2
