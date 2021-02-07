@@ -1,21 +1,23 @@
-Set objFileToWrite = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",2,true)
-objFileToWrite.WriteLine(1)
-objFileToWrite.Close
-Set objFileToWrite = Nothing
-
-Set objFileToRead = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",1)
+' Read Map Count
+Set readMapCount = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",1)
 Dim strLine
-do while not objFileToRead.AtEndOfStream
-     strLine = objFileToRead.ReadLine()
+do while not readMapCount.AtEndOfStream
+     strLine = readMapCount.ReadLine()
      'Do something with the line
 loop
-objFileToRead.Close
-Set objFileToRead = Nothing
+readMapCount.Close
+Set readMapCount = Nothing
+' Write Default map count
+Set mapCount = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",2,true)
+mapCount.WriteLine(1)
+mapCount.Close
+Set mapCount = Nothing
 
-Set objFileToWrite = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
+' Format map count
+Set mapCountState = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
 map = "MAP "
 mapCount = strLine
 mapD = " OF 3"
-objFileToWrite.WriteLine(map+mapCount+mapD)
-objFileToWrite.Close
-Set objFileToWrite = Nothing
+mapCountState.WriteLine(map+mapCount+mapD)
+mapCountState.Close
+Set mapCountState = Nothing

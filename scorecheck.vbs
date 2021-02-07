@@ -33,7 +33,7 @@ ElseIf team3SCore >=2 Then
 ElseIf team4SCore >=2 Then
      writeWinner.WriteLine(teamName4+" Wins")
 Else
-     objShell.Run "F:\Commands\scripts\mapcount.vbs"
+     ' objShell.Run "F:\Commands\scripts\mapcount.vbs"
 End If
 writeWinner.Close
-' Set writeWinner = Nothing
+Set writeWinner = Nothing

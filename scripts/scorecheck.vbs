@@ -7,22 +7,22 @@ Include("F:\Commands\scripts\getcurrentset.vbs")
 
 ' Declare Winner if score is equal or above 2
 
-If team1SCore = 2 Then
+If team1SCore >= 2 Then
      writeSet1.WriteLine(team1Set+1)
      writeSet2.WriteLine(team2Set)
      writeSet3.WriteLine(team3Set)
      writeSet4.WriteLine(team4Set)
-ElseIf team2SCore = 2 Then
+ElseIf team2SCore >= 2 Then
      writeSet1.WriteLine(team1Set)
      writeSet2.WriteLine(team2Set+1)
      writeSet3.WriteLine(team3Set)
      writeSet4.WriteLine(team4Set)
-ElseIf team3SCore = 2 Then
+ElseIf team3SCore >= 2 Then
      writeSet1.WriteLine(team1Set)
      writeSet2.WriteLine(team2Set)
      writeSet3.WriteLine(team3Set+1)
      writeSet4.WriteLine(team4Set)
-ElseIf team4SCore = 2 Then
+ElseIf team4SCore >= 2 Then
      writeSet1.WriteLine(team1Set)
      writeSet2.WriteLine(team2Set)
      writeSet3.WriteLine(team3Set)
@@ -34,6 +34,7 @@ Else
      writeSet4.WriteLine(team4Set)
 End If
 
+' objShell.Run "F:\Commands\scripts\mapcount.vbs"
 
 Sub Include(sIncludeFile)
   Const OpenAsDefault = -2
