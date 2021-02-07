@@ -2,22 +2,30 @@ Dim objShell
 Set objShell = Wscript.CreateObject("WScript.Shell")
 
 ' Gets Team Name & Check Score
-Include("F:\Commands\scripts\getcurrentscore.vbs")
+Include("F:\Commands\scripts\readnames.vbs")
 Include("F:\Commands\scripts\getcurrentset.vbs")
 
 ' Declare Winner if score is equal or above 2
-
-If team1SCore >=2 Then
-     writeSet1.WriteLine(team1Set+1)
-ElseIf team2SCore >=2 Then
-     writeSet2.WriteLine(team2Set+1)
-ElseIf team3SCore >=2 Then
-     writeSet3.WriteLine(team3Set+1)
-ElseIf team4SCore >=2 Then
-     writeSet4.WriteLine(team4Set+1)
-Else
-     objShell.Run "F:\Commands\scripts\mapcount.vbs"
+Set writeWinner = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
+If team1Set >=2 Then
+     writeWinner.WriteLine(teamName1+" Win!")
+     WScript.Sleep(1400)
+     objShell.Run "F:\Commands\actions\show-winner.vbs"
+ElseIf team2Set >=2 Then
+     writeWinner.WriteLine(teamName2+" Win!")
+     WScript.Sleep(1400)
+     objShell.Run "F:\Commands\actions\show-winner.vbs"
+ElseIf team3Set >=2 Then
+     writeWinner.WriteLine(teamName3+" Win!")
+     WScript.Sleep(1400)
+     objShell.Run "F:\Commands\actions\show-winner.vbs"
+ElseIf team4Set >=2 Then
+     writeWinner.WriteLine(teamName4+" Win!")
+      WScript.Sleep(1400)
+     objShell.Run "F:\Commands\actions\show-winner.vbs"
 End If
+writeWinner.Close
+' Set writeWinner = Nothing
 
 Sub Include(sIncludeFile)
   Const OpenAsDefault = -2
