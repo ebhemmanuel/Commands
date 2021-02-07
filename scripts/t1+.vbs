@@ -17,11 +17,14 @@ Set writeTeamSet = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\C
 writeTeamSet.WriteLine(teamSet)
 If teamScore < 2 Then
      writeTeamScore.WriteLine(teamScore+1)
+     objShell.Run "F:\Commands\scripts\mapcount.vbs"
+
 Else
      writeTeamScore.WriteLine(teamScore)
 End If
 
 objShell.Run "F:\Commands\scripts\scorecheck.vbs"
+objShell.Run "F:\Commands\scripts\setcheck.vbs"
 
 ' Set readTeamScore = Nothing
 ' Set readTeamSet = Nothing

@@ -15,5 +15,5 @@ If teamScore < 2 Then
 End If
 objShell.Run "F:\Commands\scripts\scorecheck.vbs"
 readTeamScore.Close
-Set readTeamScore = Nothing
+' Set readTeamScore = Nothing
 Set objShell = Nothing

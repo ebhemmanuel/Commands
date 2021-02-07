@@ -5,6 +5,11 @@ Set objShell = Wscript.CreateObject("WScript.Shell")
 Include("F:\Commands\scripts\readnames.vbs")
 Include("F:\Commands\scripts\getcurrentset.vbs")
 
+Function TeamNames
+     writeTeamA.WriteLine(teamA)
+     writeTeamB.WriteLine(teamB)
+End Function
+
 ' Declare Winner if score is equal or above 2
 Set writeWinner = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
 If team1Set >=2 Then
