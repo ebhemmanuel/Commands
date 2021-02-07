@@ -8,12 +8,12 @@ do while not readMapCount.AtEndOfStream
      'Do something with the line
 loop
 readMapCount.Close
-' Set readMapCount = Nothing
+Set readMapCount = Nothing
 
 Set mapCountState = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",2,true)
 mapCountState.WriteLine(mapCount+1)
 mapCountState.Close
-Set mapCountState = Nothing
+
 
 Set recheckCount = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",1)
 do while not recheckCount.AtEndOfStream
@@ -36,3 +36,4 @@ mapFormat.Close
 objShell.Close
 Set objShell = Nothing
 Set mapFormat = Nothing
+Set mapCountState = Nothing

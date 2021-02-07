@@ -37,25 +37,53 @@ Set objShell = Wscript.CreateObject("WScript.Shell")
      team3Set = gameCount3.ReadLine()
      team4Set = gameCount4.ReadLine()
 
+Set readMapCount = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",1)
+Dim mapCount
+do while not readMapCount.AtEndOfStream
+     mapCount = readMapCount.ReadLine()
+     'Do something with the line
+loop
+readMapCount.Close
+
+Set mapCountState = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\mapcount.txt",2,true)
+map = "MAP "
+mapD = " OF 3"
+
 
 ' Declare Winner if score is equal or above 2
-Set writeWinner = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
+Set mapFormat = CreateObject("Scripting.FileSystemObject").OpenTextFile("F:\Commands\scripts\maptemp.txt",2,true)
+
 If team1Set >=2 Then
-     writeWinner.WriteLine(teamName1+" Win!")
+     mapFormat.WriteLine(teamName1+" Win!")
      WScript.Sleep(1400)
      objShell.Run "F:\Commands\actions\show-winner.vbs"
+     mapFormat.Close
 ElseIf team2Set >=2 Then
-     writeWinner.WriteLine(teamName2+" Win!")
+     mapFormat.WriteLine(teamName2+" Win!")
      WScript.Sleep(1400)
      objShell.Run "F:\Commands\actions\show-winner.vbs"
+     mapFormat.Close
 ElseIf team3Set >=2 Then
-     writeWinner.WriteLine(teamName3+" Win!")
+     mapFormat.WriteLine(teamName3+" Win!")
      WScript.Sleep(1400)
      objShell.Run "F:\Commands\actions\show-winner.vbs"
+     mapFormat.Close
 ElseIf team4Set >=2 Then
-     writeWinner.WriteLine(teamName4+" Win!")
+     mapFormat.WriteLine(teamName4+" Win!")
       WScript.Sleep(1400)
      objShell.Run "F:\Commands\actions\show-winner.vbs"
+     mapFormat.Close
 End If
-writeWinner.Close
-Set writeWinner = Nothing
+If mapCount < 3 Then
+     mapCountState.WriteLine(mapCount+1)
+     mapFormat.WriteLine(map+mapCount+mapD)
+     mapFormat.Close
+     mapCountState.Close
+Else
+     mapFormat.WriteLine(map+mapCount+mapD)
+     mapFormat.Close
+     mapCountState.Close
+End If
+Set mapCountState = Nothing
+Set mapFormat = Nothing
+Set readMapCount = Nothing
