@@ -74,6 +74,7 @@ ElseIf team4Set >=2 Then
      objShell.Run "F:\Commands\actions\show-winner.vbs"
      mapFormat.Close
 End If
+
 If mapCount < 3 Then
      mapCountState.WriteLine(mapCount+1)
      mapFormat.WriteLine(map+mapCount+mapD)
