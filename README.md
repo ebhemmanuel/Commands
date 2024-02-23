@@ -31,6 +31,3 @@ Contributions to this project are welcome. Please adhere to the following steps 
     Commit your changes (git commit -am 'Add some YourFeatureName').
     Push to the branch (git push origin feature/YourFeatureName).
     Open a pull request.
-
-**License**
-This project is licensed under the MIT License
