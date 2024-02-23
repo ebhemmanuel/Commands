@@ -12,7 +12,7 @@ Features
 ## Prerequisites
 Streamlabels or ChatApi 
 Before you begin, ensure you have met the following requirements:
-
+- setup either a local system for the script files as seen on the scorecheck.vbs or try to connect it to an existing trigger.
 - Microsoft Visual Studio installed on your system.
 - Basic understanding of Visual Basic programming.
 - Access to the chat API you plan to integrate with.
