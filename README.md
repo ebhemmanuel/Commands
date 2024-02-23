@@ -1,4 +1,4 @@
-Project Title: Team Points Monitoring and Control System
+## Team Points Monitoring and Control System
 Description
 
 This project is designed to facilitate easy points monitoring in a team-versus-team gaming environment. It integrates with a chat API to receive trigger values that update the points for each team. The system stores these values locally and supports automatic scene switching and replay triggers based on the game's progress. It is built to handle a maximum points cap, after which a team is declared the winner of the event.
